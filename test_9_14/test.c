@@ -1,15 +1,31 @@
 #define _CRT_SECURE_NO_WARNINGS 1
 #include <stdio.h>
 
+int i;
 int main()
 {
-	int i = 1;
-	int ret = (++i) + (++i) + (++i);
-
-	printf("%d\n", ret);
-	printf("%d\n", i);
-	return 0;
+    i--;
+    if (i > sizeof(i))
+    {
+        printf(">\n");
+    }
+    else
+    {
+        printf("<\n");
+    }
+    return 0;
 }
+
+
+//int main()
+//{
+//	int i = 1;
+//	int ret = (++i) + (++i) + (++i);
+//
+//	printf("%d\n", ret);
+//	printf("%d\n", i);
+//	return 0;
+//}
 
 
 //int fun()
