@@ -2,26 +2,50 @@
 #include <stdio.h>
 #include <string.h>
 
-//输入一个整数，将这个整数以字符串的形式逆序输出
-//程序不考虑负数的情况，若数字含有0，则逆序形式也含有0，如输入为100，则输出为001
+//功能:等差数列 2，5，8，11，14。。。。
+//输入 : 正整数N > 0
+//输出:求等差数列前N项和
+//返回 : 转换成功返回 0, 非法输入与异常返回 - 1
 int main()
 {
-	char tmp[20];
-	scanf("%s", tmp);
-	int size = strlen(tmp);
-	int left = 0;
-	int right = size - 1;
-	while (left <= right)
+	int num;
+	int sum = 2;
+	int count = 0;
+	while (1)
 	{
-		char a;
-		a = tmp[left];
-		tmp[left] = tmp[right];
-		tmp[right] = a;
-		left++;
-		right--;
+		scanf("%d", &num);
+		if (num > 0)
+			break;
 	}
-	printf("%s\n", tmp);
+	for (num; num > 1; num--)
+	{
+		sum = sum + 3;
+		count = count + sum;
+	}
+	printf("%d\n", count + 2);
 }
+
+
+//输入一个整数，将这个整数以字符串的形式逆序输出
+//程序不考虑负数的情况，若数字含有0，则逆序形式也含有0，如输入为100，则输出为001
+//int main()
+//{
+//	char tmp[20];
+//	scanf("%s", tmp);
+//	int size = strlen(tmp);
+//	int left = 0;
+//	int right = size - 1;
+//	while (left <= right)
+//	{
+//		char a;
+//		a = tmp[left];
+//		tmp[left] = tmp[right];
+//		tmp[right] = a;
+//		left++;
+//		right--;
+//	}
+//	printf("%s\n", tmp);
+//}
 
 
 //输入一个整数，将这个整数以字符串的形式逆序输出
