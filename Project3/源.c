@@ -1,48 +1,59 @@
 #define _CRT_SECURE_NO_WARNINGS 1
 #include <stdio.h>
 #include <string.h>
-//实现一个函数，可以左旋字符串中的k个字符。
-//例如：
-//ABCD左旋一个字符得到BCDA
-//ABCD左旋两个字符
-
-void left_handed(char *p,int size,int count)
+#include <stdlib.h>
+#define ROW 4
+#define COL 4
+//有一个数字矩阵，矩阵的每行从左到右是递增的，矩阵从上到下是递增的
+//请编写程序在这样的矩阵中查找某个数字是否存在。
+int Yang(int arr[ROW][COL], int val)
 {
-	int left = 0;
-	int right = size - 1;
-	while (count)
+	int i = 0;
+	int j = COL - 1;
+	int tmp = arr[i][j];
+	while (1)
 	{
-		char tmp = p[0];
-		int i = 0;
-		for (i = 1; i <= size - 1; i++)
+		if (tmp == val)
 		{
-			p[i - 1] = p[i];
+			return 1;
 		}
-		p[size - 1] = tmp;
-		count--;
+		else if (tmp < val && j >= 0)
+		{
+			tmp = arr[++i][j];
+		}
+		else if (tmp > val && j >= 0)
+		{
+			tmp = arr[i][--j];
+		}
+		else
+		{
+			return 0;
+		}
 	}
-	int j = 0;
-	for (j = 0; j < size; j++)
-	{
-		printf("%c", p[j]);
-	}
-	printf("\n");
 }
-
 int main()
 {
-	int size;
-	int count;
+	int a[ROW][COL] = { 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16 };
+	int i = 0;
 	int j = 0;
-	printf("请输入打算左旋的个数：  ");
-	scanf("%d", &count);
-	char arr[] = "ABCDEF";
-	size = sizeof(arr) / sizeof(arr[3]) - 1;
-	for (j = 0; j < size; j++)
+	int num;
+	for (i = 0; i < ROW; i++)
 	{
-		printf("%c", arr[j]);
+		for (j = 0; j < COL; j++)
+		{
+			printf("%3d", a[i][j]);
+		}
+		printf("\n");
 	}
-	printf("\n");
-	left_handed(arr,size,count);
+	printf("请输入:");
+	scanf("%d", &num);
+	if (Yang(a, num))
+	{
+		printf("%d在该数组中\n", num);
+	}
+	else
+	{
+		printf("%d不在该数组中\n", num);
+	}
 	return 0;
 }
