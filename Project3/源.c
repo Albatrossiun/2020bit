@@ -2,58 +2,21 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-#define ROW 4
-#define COL 4
-//有一个数字矩阵，矩阵的每行从左到右是递增的，矩阵从上到下是递增的
-//请编写程序在这样的矩阵中查找某个数字是否存在。
-int Yang(int arr[ROW][COL], int val)
+//模拟实现strcpy
+
+void mystrcpy(char *arr1,const char* arr2)
 {
-	int i = 0;
-	int j = COL - 1;
-	int tmp = arr[i][j];
-	while (1)
+	while ((*arr1++) = (*arr2++))
 	{
-		if (tmp == val)
-		{
-			return 1;
-		}
-		else if (tmp < val && j >= 0)
-		{
-			tmp = arr[++i][j];
-		}
-		else if (tmp > val && j >= 0)
-		{
-			tmp = arr[i][--j];
-		}
-		else
-		{
-			return 0;
-		}
+		;
 	}
 }
+
 int main()
 {
-	int a[ROW][COL] = { 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16 };
-	int i = 0;
-	int j = 0;
-	int num;
-	for (i = 0; i < ROW; i++)
-	{
-		for (j = 0; j < COL; j++)
-		{
-			printf("%3d", a[i][j]);
-		}
-		printf("\n");
-	}
-	printf("请输入:");
-	scanf("%d", &num);
-	if (Yang(a, num))
-	{
-		printf("%d在该数组中\n", num);
-	}
-	else
-	{
-		printf("%d不在该数组中\n", num);
-	}
+	char arr1[20] = { 0 };
+	char arr2[] = "asdf";
+	mystrcpy(arr1,arr2);
+	printf("%s\n", arr1);
 	return 0;
 }
