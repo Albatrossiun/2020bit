@@ -1,3 +1,2 @@
 ﻿  main.c
-E:\Code\2020bit\Project3\main.c(26): warning C4716: “my_memmove”: 必须返回一个值
   Project3.vcxproj -> E:\Code\2020bit\Project3\Debug\Project3.exe

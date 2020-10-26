@@ -2,30 +2,22 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-//Ä£ÄâÊµÏÖmemmove
-void* my_memmove(void* arr1, const void* arr2, size_t count)
+void* mymemmove(void* arr1, const void* arr2, size_t count)
 {
-	if (arr1 < arr2)
+	void* ret = arr1;
+	while (count--)
 	{
-		while (count--)
-		{
-			*(char*)arr1 = *(char*)arr2;
-			arr1 = (char*)arr1 + 1;
-			arr2 = (char*)arr2 + 1;
-		}
+		*(char*)arr1 = *(char*)arr2;
+		((char*)arr1)++;
+		((char*)arr2)++;
 	}
-	else
-	{
-		while (count--)
-		{
-			*((char*)arr1 + count) = *((char*)arr2 + count);
-		}
-	}
+	return ret;
 }
 
 int main()
 {
-	int arr2[8] = { 1, 2, 4, 3, 5 ,9 ,8 ,6 };
-	my_memmove(arr2, arr2+1, 12);
+	int arr2[8] = { 1,2,3,4,5,6,7,8 };
+	int* p = NULL;
+	mymemmove(arr2+3, arr2, 20);
 	return 0;
 }
