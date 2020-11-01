@@ -23,25 +23,25 @@
 //}
 
 
-//int main()
-//{
-//    unsigned char puc[4];
-//    struct tagPIM
-//    {
-//        unsigned char ucPim1;
-//        unsigned char ucData0 : 1;
-//        unsigned char ucData1 : 2;
-//        unsigned char ucData2 : 3;
-//    }*pstPimData;
-//    pstPimData = (struct tagPIM*)puc;
-//    memset(puc, 0, 4);
-//    pstPimData->ucPim1 = 2;
-//    pstPimData->ucData0 = 3;
-//    pstPimData->ucData1 = 4;
-//    pstPimData->ucData2 = 5;
-//    printf("%02x %02x %02x %02x\n", puc[0], puc[1], puc[2], puc[3]);
-//    return 0;
-//}
+int main()
+{
+    unsigned char puc[4];
+    struct tagPIM
+    {
+        unsigned char ucPim1;
+        unsigned char ucData0 : 1;
+        unsigned char ucData1 : 2;
+        unsigned char ucData2 : 3;
+    }*pstPimData;
+    pstPimData = (struct tagPIM*)puc;
+    memset(puc, 0, 4);
+    pstPimData->ucPim1 = 2;
+    pstPimData->ucData0 = 3;
+    pstPimData->ucData1 = 4;
+    pstPimData->ucData2 = 5;
+    printf("%02x %02x %02x %02x\n", puc[0], puc[1], puc[2], puc[3]);
+    return 0;
+}
 //   02 29 00 00
 
 //#define MAX_SIZE A+B
@@ -54,3 +54,15 @@
 //}*Env_Alarm_Record;
 //struct _Record_Struct* pointer = (struct _Record_Struct*)malloc(sizeof(struct _Record_Struct) * MAX_SIZE);
 //  3 * 2+3
+
+
+//int main()
+//{
+//	struct S2
+//	{
+//		char c1;
+//		char c2;
+//		int i;
+//	};
+//	printf("%d\n", sizeof(struct S2));
+//}
