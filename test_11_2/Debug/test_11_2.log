@@ -1,0 +1,8 @@
+﻿  contact.c
+E:\Code\2020bit\test_11_2\contact.c(24,9): warning C4477: “scanf”: 格式字符串“%d”需要类型“int *”的参数，但可变参数 1 拥有了类型“short *”
+E:\Code\2020bit\test_11_2\contact.c(24,9): message : 请考虑在格式字符串中使用“%hd”
+E:\Code\2020bit\test_11_2\contact.c(139,9): warning C4477: “scanf”: 格式字符串“%d”需要类型“int *”的参数，但可变参数 1 拥有了类型“short *”
+E:\Code\2020bit\test_11_2\contact.c(139,9): message : 请考虑在格式字符串中使用“%hd”
+  test.c
+  正在生成代码...
+  test_11_2.vcxproj -> E:\Code\2020bit\test_11_2\Debug\test_11_2.exe
