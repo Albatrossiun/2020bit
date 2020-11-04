@@ -1,0 +1,5 @@
+﻿  test.c
+E:\Code\2020bit\test_11_4\test.c(235,16): warning C4013: “isspace”未定义；假设外部返回 int
+E:\Code\2020bit\test_11_4\test.c(254,14): warning C4013: “isdigit”未定义；假设外部返回 int
+E:\Code\2020bit\test_11_4\test.c(265,12): warning C4244: “return”: 从“__int64”转换到“int”，可能丢失数据
+  test_11_4.vcxproj -> E:\Code\2020bit\test_11_4\Debug\test_11_4.exe
