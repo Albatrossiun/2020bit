@@ -4,8 +4,6 @@
 #include <stdio.h>
 #include <string.h>
 
-#define MAX 1000
-
 #define MAX_NAME 20
 #define MAX_TELE 12
 #define MAX_ADDR 100
@@ -22,7 +20,8 @@ typedef struct PeoInfo
 
 typedef struct Contact
 {
-	PeoInfo data[MAX];
+	PeoInfo *data;
+	int capacity;
 	int sz;
 }Contact;
 
@@ -33,3 +32,5 @@ void search_contact(Contact* pc);
 void modify_contact(Contact* pc);
 void sort_contact(Contact* pc);
 void clear_contact(Contact* pc);
+void init_contact(Contact* pc);
+void destroy_contact(Contact* pc);

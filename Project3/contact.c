@@ -1,11 +1,41 @@
 #define _CRT_SECURE_NO_WARNINGS 1
 #include "contact.h"
 
+void init_contact(Contact* pc)
+{
+	pc->sz = 0;
+	pc->capacity = 3;
+	pc->data = (PeoInfo*)malloc(3 * sizeof(PeoInfo));
+	if (pc->data == NULL)
+	{
+		perror("init_contact::malloc");
+		return;
+	}
+}
+
+void destroy_contact(Contact* pc)
+{
+	free(pc->data);
+	pc->data = NULL;
+	pc->capacity = 0;
+	pc->sz = 0;
+}
+
 void add_contact(Contact* pc)
 {
-	if (pc->sz >= MAX)
+	if (pc->sz == pc->capacity)
 	{
-		printf("通讯录已满，无法ADD");
+		PeoInfo* ptr = (PeoInfo*)realloc(pc->data, (pc->capacity + 2) * sizeof(PeoInfo));
+		if (ptr != NULL)
+		{
+			pc->data = ptr;
+			pc->capacity += 2;
+			printf("增容成功\n");
+		}
+		else
+		{
+			perror("add_contact::realloc");
+		}
 	}
 	else
 	{
@@ -37,20 +67,6 @@ static int find_peo_by_name(Contact* pc, char name[])
 	}
 	return -1;
 }
-
-//void show_contact(Contact* pc)
-//{
-//	int i = 0;
-//	printf("%10s %12s %20s %5s %5s\n", "名字", "电话", "地址", "年龄", "性别");
-//	for (i = 0; i < pc->sz; i++)
-//	{
-//		printf("%10s %12s %20s %5d %5s\n", pc->data[i].name,
-//			pc->data[i].tele,
-//			pc->data[i].addr,
-//			pc->data[i].age,
-//			pc->data[i].sex);
-//	}
-//}
 
 void del_contact(Contact* pc)
 {
@@ -162,7 +178,6 @@ void clear_contact(Contact* pc)
 	printf("已清空通讯录\n");
 }
 
-
 void show_contact(Contact* pc)
 {
 	int i = 0;
@@ -176,17 +191,3 @@ void show_contact(Contact* pc)
 			pc->data[i].sex);
 	}
 }
-
-//void show_contact(Contact* pc)
-//{
-//	int i = 0;
-//	printf("%10s %12s %20s %5s %5s\n", "名字", "电话", "地址", "年龄", "性别");
-//	for (i = 0; i < pc->sz; i++)
-//	{
-//		printf("%10s %12s %20s %5d %5s\n", pc->data[i].name,
-//			pc->data[i].tele,
-//			pc->data[i].addr,
-//			pc->data[i].age,
-//			pc->data[i].sex);
-//	}
-//}

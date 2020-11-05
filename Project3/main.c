@@ -29,6 +29,7 @@ void menu()
 void test()
 {
 	Contact con = { 0 };
+	init_contact(&con);
 	int input = 0;
 	do
 	{
@@ -44,8 +45,8 @@ void test()
 		case DEL:
 			del_contact(&con);
 			break;
-		//case SORT:
-		//	sort_contact(&con);
+		case SORT:
+			sort_contact(&con);
 			break;
 		case SHOW:
 			show_contact(&con);
@@ -60,6 +61,7 @@ void test()
 			clear_contact(&con);
 			break;
 		case EXIT:
+			destroy_contact(&con);
 			printf("�˳�ͨѶ¼\n");
 			break;
 		default:
