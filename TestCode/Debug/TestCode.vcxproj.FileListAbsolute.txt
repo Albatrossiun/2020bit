@@ -1,0 +1,2 @@
+E:\Code\2020bit\TestCode\Debug\TestCode.exe
+E:\Code\2020bit\TestCode\Debug\TestCode.pdb
