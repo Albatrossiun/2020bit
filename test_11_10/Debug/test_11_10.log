@@ -1,0 +1,4 @@
+﻿  main.c
+E:\Code\2020bit\test_11_10\main.c(293,14): warning C4477: “sscanf”: 格式字符串“%d”需要类型“int *”的参数，但可变参数 2 拥有了类型“int”
+E:\Code\2020bit\test_11_10\main.c(293,14): warning C4477: “sscanf”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 3 拥有了类型“double”
+  test_11_10.vcxproj -> E:\Code\2020bit\test_11_10\Debug\test_11_10.exe
