@@ -5,34 +5,101 @@
 #include <limits.h>
 #include <ctype.h>
 
-int main()
-{
-	FILE* pfRead = fopen("test1.txt", "r");
-	if (pfRead == NULL)
-	{
-		perror("open file for reading");
-		return 1;
-	}
-	FILE* pfWrite = fopen("test2.txt", "w");
-	if (pfWrite == NULL)
-	{
-		perror("open file for writting");
-		fclose(pfRead);
-		pfRead = NULL;
-		return 1;
-	}
+int g_number = 0;
 
-	int ch = 0;
-	while ((ch = fgetc(pfRead)) != EOF)
-	{
-		fputc(ch, pfWrite);
-	}
-	fclose(pfRead);
-	pfRead = NULL;
-	fclose(pfWrite);
-	pfWrite = NULL;
-	return 0;
+
+void Permutation(int ColumnIndex[], int length, int index)
+{
+    if (index == length)
+    {
+        if (Check(ColumnIndex, length))
+        {
+            ++g_number;
+            PrintQueen(ColumnIndex, length);
+        }
+    }
+    else
+    {
+        for (int i = index; i < length; ++i)
+        {
+            int temp = ColumnIndex[i];
+            ColumnIndex[i] = ColumnIndex[index];
+            ColumnIndex[index] = temp;
+            Permutation(ColumnIndex, length, index + 1);
+            temp = ColumnIndex[index];
+            ColumnIndex[index] = ColumnIndex[i];
+            ColumnIndex[i] = temp;
+        }
+    }
 }
+
+void EightQueen()
+{
+    const int queens = 8;
+    int ColumnIndex[10];
+    for (int i = 0; i < queens; ++i)
+    {
+        ColumnIndex[i] = i;
+    }
+    Permutation(ColumnIndex, queens, 0);
+}
+
+
+
+int Check(int ColumnIndex[], int length)
+{
+    for (int i = 0; i < length; ++i)
+    {
+        for (int j = i + 1; j < length; ++j)
+        {
+            if ((i - j == ColumnIndex[i] - ColumnIndex[j])
+                || (j - i == ColumnIndex[i] - ColumnIndex[j]))
+                return -1;
+        }
+    }
+    return 1;
+}
+
+void PrintQueen(int ColumnIndex[], int length)
+
+{
+    printf("Solution %d\n", g_number);
+    for (int i = 0; i < length; ++i)
+    {
+        printf("%d\t", ColumnIndex[i]);
+    }
+    printf("\n");
+}
+
+
+//int main()
+//{
+//	FILE* pfRead = fopen("test1.txt", "r");
+//	if (pfRead == NULL)
+//	{
+//		perror("open file for reading");
+//		return 1;
+//	}
+//	FILE* pfWrite = fopen("test2.txt", "w");
+//	if (pfWrite == NULL)
+//	{
+//		perror("open file for writting");
+//		fclose(pfRead);
+//		pfRead = NULL;
+//		return 1;
+//	}
+//
+//	int ch = 0;
+//	while ((ch = fgetc(pfRead)) != EOF)
+//	{
+//		fputc(ch, pfWrite);
+//	}
+//	fclose(pfRead);
+//	pfRead = NULL;
+//	fclose(pfWrite);
+//	pfWrite = NULL;
+//	return 0;
+//}
 
 
 
