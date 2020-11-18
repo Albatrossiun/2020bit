@@ -5,27 +5,63 @@
 #include <limits.h>
 #include <ctype.h>
 
+//int main()
+//{
+//	int arr[]={ 1,1,2,2,3,3,4,4,5,6 };
+//	int i = 0;
+//	int ret = 0;
+//	int num1 = 0;
+//	int num2 = 0;
+//	int sz = sizeof(arr) / sizeof(arr[0]);
+//	for (i = 0; i < sz; i++)
+//		ret ^= arr[i];
+//	for (i = 0; i < 32; i++)
+//	{
+//		if (((ret >> i)&1) == 1)
+//			break;
+//	}
+//	int pos = i;
+//	for (i = 0; i < sz; i++)
+//	{
+//		if (((arr[i] >> pos)&1) == 1)
+//			num1 ^= arr[i];
+//	}
+//	num2 = ret ^ num1;
+//	printf("%d %d\n", num1, num2);
+//}
+
+
+
+//#define EXCHANGE(x) ((((x)&0xAAAAAAAA)>>1)|(((x)&0x55555555)<<1))
+//
+//int main()
+//{
+//	int a = 5;
+//	printf("%d\n", EXCHANGE(a));
+//	return 0;
+//}
+
 // 写一个宏，计算结构体中某变量相对于首地址的偏移，并给出说明
-#define OffSetOf(StructType, MemberName) (size_t)&(((StructType *)0)->MemberName)
-
-struct student
-{
-	char a;
-	char c;
-	int b;
-};
-
-int main()
-{
-	struct student s = { 'a',4,'c' };
-	int tmp= OffSetOf(struct student, a);
-	printf("%d\n", tmp);
-	tmp = OffSetOf(struct student, b);
-	printf("%d\n", tmp);
-	tmp = OffSetOf(struct student, c);
-	printf("%d\n", tmp);
-	return 0;
-}
+//#define OffSetOf(StructType, MemberName) (size_t)&(((StructType *)0)->MemberName)
+//
+//struct student
+//{
+//	char a;
+//	char c;
+//	int b;
+//};
+//
+//int main()
+//{
+//	struct student s = { 'a',4,'c' };
+//	int tmp= OffSetOf(struct student, a);
+//	printf("%d\n", tmp);
+//	tmp = OffSetOf(struct student, b);
+//	printf("%d\n", tmp);
+//	tmp = OffSetOf(struct student, c);
+//	printf("%d\n", tmp);
+//	return 0;
+//}
 
 //int main()
 //{
