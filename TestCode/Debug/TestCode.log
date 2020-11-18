@@ -1,4 +1,2 @@
 ﻿  main.c
-E:\Code\2020bit\TestCode\main.c(15,18): warning C4013: “Check”未定义；假设外部返回 int
-E:\Code\2020bit\TestCode\main.c(18,23): warning C4013: “PrintQueen”未定义；假设外部返回 int
-E:\Code\2020bit\TestCode\main.c(63,6): error C2371: “PrintQueen”: 重定义；不同的基类型
+  TestCode.vcxproj -> E:\Code\2020bit\TestCode\Debug\TestCode.exe

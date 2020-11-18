@@ -5,72 +5,27 @@
 #include <limits.h>
 #include <ctype.h>
 
-int g_number = 0;
+// 写一个宏，计算结构体中某变量相对于首地址的偏移，并给出说明
+#define OffSetOf(StructType, MemberName) (size_t)&(((StructType *)0)->MemberName)
 
-
-void Permutation(int ColumnIndex[], int length, int index)
+struct student
 {
-    if (index == length)
-    {
-        if (Check(ColumnIndex, length))
-        {
-            ++g_number;
-            PrintQueen(ColumnIndex, length);
-        }
-    }
-    else
-    {
-        for (int i = index; i < length; ++i)
-        {
-            int temp = ColumnIndex[i];
-            ColumnIndex[i] = ColumnIndex[index];
-            ColumnIndex[index] = temp;
-            Permutation(ColumnIndex, length, index + 1);
-            temp = ColumnIndex[index];
-            ColumnIndex[index] = ColumnIndex[i];
-            ColumnIndex[i] = temp;
-        }
-    }
-}
+	char a;
+	char c;
+	int b;
+};
 
-void EightQueen()
+int main()
 {
-    const int queens = 8;
-    int ColumnIndex[10];
-    for (int i = 0; i < queens; ++i)
-    {
-        ColumnIndex[i] = i;
-    }
-    Permutation(ColumnIndex, queens, 0);
+	struct student s = { 'a',4,'c' };
+	int tmp= OffSetOf(struct student, a);
+	printf("%d\n", tmp);
+	tmp = OffSetOf(struct student, b);
+	printf("%d\n", tmp);
+	tmp = OffSetOf(struct student, c);
+	printf("%d\n", tmp);
+	return 0;
 }
-
-
-
-int Check(int ColumnIndex[], int length)
-{
-    for (int i = 0; i < length; ++i)
-    {
-        for (int j = i + 1; j < length; ++j)
-        {
-            if ((i - j == ColumnIndex[i] - ColumnIndex[j])
-                || (j - i == ColumnIndex[i] - ColumnIndex[j]))
-                return -1;
-        }
-    }
-    return 1;
-}
-
-void PrintQueen(int ColumnIndex[], int length)
-
-{
-    printf("Solution %d\n", g_number);
-    for (int i = 0; i < length; ++i)
-    {
-        printf("%d\t", ColumnIndex[i]);
-    }
-    printf("\n");
-}
-
 
 //int main()
 //{
