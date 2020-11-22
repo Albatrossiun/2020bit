@@ -4,6 +4,118 @@
 #include <stdlib.h>
 #include <limits.h>
 #include <ctype.h>
+#include <math.h>
+
+void fun(char* arr, int length)
+{
+	int count = 0;
+	int i = 0;
+	for (i = 0; i < length; i++)
+	{
+		if (arr[i] == ' ')
+		{
+			count++;
+		}
+	}
+	int size = length + 2 * count - 1;
+	for (i = length-1 ; i >= 0; i--)
+	{
+		if (arr[i] == ' ')
+		{
+			arr[size--] = '0';
+			arr[size--] = '2';
+			arr[size--] = '%';
+		}
+		else
+		{
+			arr[size--] = arr[i];
+		}
+	}
+}
+
+int main()
+{
+	char* arr = "We are happy.";
+	int length = strlen(arr);
+	fun(arr, length);
+	printf("%s\n", arr);
+	return 0;
+}
+
+//int main()
+//{
+//	int num = 0;
+//	int f1 = 0;
+//	int f2 = 1;
+//	int f3 = 0;
+//	scanf("%d", &num);
+//	while (1)
+//	{
+//		if (f2 == num)
+//		{
+//			printf("%d\n", 0);
+//			break;
+//		}
+//		else if(f2>num)
+//		{
+//			if (abs(f2 - num) > abs(f1 - num))
+//			{
+//				printf("%d\n", abs(f1 - num));
+//				break;
+//			}
+//			else
+//			{
+//				printf("%d\n", abs(f2 - num));
+//				break;
+//			}
+//		}
+//		f3 = f1 + f2;
+//		f1 = f2;
+//		f2 = f3;
+//	}
+//	return 0;
+//}
+
+
+//void replaceSpace(char* str, int length)
+//{
+//    char arr[20] = { 0 };
+//    int i = 0;
+//    char* p = str;
+//    while (*p)
+//    {
+//        if ((*p) != ' ')
+//        {
+//            arr[i] = *p;
+//            i++;
+//            p++;
+//        }
+//        else
+//        {
+//            arr[i] = '%';
+//            i++;
+//            arr[i] = '2';
+//            i++;
+//            arr[i] = '0';
+//            i++;
+//            p++;
+//        }
+//    }
+//    int j = 0;
+//    while (arr[j])
+//    {
+//        str[j] = arr[j];
+//        j++;
+//    }
+//}
+
+//int main()
+//{
+//    char str[20] = "we are happy.";
+//    replaceSpace(str, 1);
+//    printf("%s\n", str);
+//    return 0;
+//}
 
 //int main()
 //{
