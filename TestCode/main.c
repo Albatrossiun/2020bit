@@ -5,42 +5,246 @@
 #include <limits.h>
 #include <ctype.h>
 #include <math.h>
+#include <windows.h>
+ 
+//int main()
+//{
+//	int arr[] = { 1,2,3,4,5,6,7,8,9,10 };
+//	int left = 0;
+//	int right = sizeof(arr) / sizeof(arr[0]) - 1;
+//	int key = 10;
+//	int mid = 0;
+//	while (left <= right)
+//	{
+//		mid = (left + right) / 2;
+//		if (arr[mid] > key)
+//		{
+//			right = mid-1;  //  right = mid ;
+//		}
+//		else if (arr[mid] < key)
+//		{
+//			left = mid+1;	//   left = mid ;
+//		}
+//		else
+//			break;
+//	}
+//	if (left <= right)
+//		printf("找到了,下标是%d\n", mid);
+//	else
+//		printf("找不到\n");
+//}
 
-void fun(char* arr, int length)
-{
-	int count = 0;
-	int i = 0;
-	for (i = 0; i < length; i++)
-	{
-		if (arr[i] == ' ')
-		{
-			count++;
-		}
-	}
-	int size = length + 2 * count - 1;
-	for (i = length-1 ; i >= 0; i--)
-	{
-		if (arr[i] == ' ')
-		{
-			arr[size--] = '0';
-			arr[size--] = '2';
-			arr[size--] = '%';
-		}
-		else
-		{
-			arr[size--] = arr[i];
-		}
-	}
-}
+//int main()
+//{
+//	int arr[] = { 1,2,3,4,5,6,7,8,9 };
+//	int size = sizeof(arr) / sizeof(arr[0]);
+//	int left = 0;
+//	int right = size - 1;
+//	int mid = (left + right) / 2;
+//	int num = 0;
+//	int flag = 0;
+//	scanf("%d", &num);
+//	while (left <= right)
+//	{
+//		if (arr[mid] == num)
+//		{
+//			flag = 1;
+//			printf("该数字位于第%d个\n", (mid + 1));
+//			break;
+//		}
+//		else
+//		{
+//			if (arr[mid] > num)
+//			{
+//				right = mid - 1;
+//				mid = (left + right) / 2;
+//			}
+//			else
+//			{
+//				left = mid + 1;
+//				mid = (left + right) / 2;
+//			}
+//		}
+//	}
+//	if (flag == 0)
+//	{
+//		printf("数组中没有找到该数字！\n");
+//	}
+//	return 0;
+//}
 
-int main()
-{
-	char* arr = "We are happy.";
-	int length = strlen(arr);
-	fun(arr, length);
-	printf("%s\n", arr);
-	return 0;
-}
+//int main()
+//{
+//	char psw[10] = "";
+//	int i = 0;
+//	int j = 0;
+//	for (i = 0; i < 3; ++i)
+//	{
+//		printf("please input:");
+//		scanf("%s", psw);
+//		if (strcmp(psw, "password") == 0)
+//			break;
+//	}
+//	if (i == 3)
+//		printf("exit\n");
+//	else
+//		printf("log in\n");
+//}
+
+//int main()
+//{
+//	char arr1[] = "welcome to bit...";
+//	char arr2[] = "#################";
+//	int left = 0;
+//	int right = strlen(arr1) - 1;
+//	printf("%s\n", arr2);
+//	while循环实现
+//	while (left <= right)
+//	{
+//		Sleep(1000);
+//		arr2[left] = arr1[left];
+//		arr2[right] = arr1[right];
+//		left++;
+//		right--;
+//		printf("%s\n", arr2);
+//	}
+//	for循环实现
+//	for (left = 0, right = strlen(arr2) - 1;
+//		left <= right;
+//		left++, right--)
+//	{
+//		Sleep(1000);
+//		arr2[left] = arr1[left];
+//		arr2[right] = arr1[right];
+//		printf("%s\n", arr2);
+//	}
+//	return 0;
+//}
+
+//int main()
+//{
+//	int i = 0;
+//	int k = 0;
+//	for (i = 0, k = 0; k = 0; i++, k++)
+//		k++;
+//	return 0;
+//}
+
+//int main()
+//{
+//	int i = 1;
+//	while (i <= 10)
+//	{
+//		if (i == 5)
+//		{
+//			i = i + 1;
+//			continue;
+//		}
+//		printf("%d ", i); // 1 2 3 4
+//		i = i + 1;
+//	}
+//	return 0; 
+//}
+
+//int main()
+//{
+//	int n = 1;
+//	int m = 2;
+//	switch (n)
+//	{
+//	case 1:
+//		m++; // n=1 m=3
+//	case 2:
+//		n++; // n=2 m=3
+//	case 3:
+//		switch (n) // n=2 m=3
+//		{//switch允许嵌套使用
+//		case 1:
+//			n++;
+//		case 2: 
+//			m++;
+//			n++;
+//			break;
+//		}
+//	case 4: // n=3 m=4
+//		m++;
+//		break;
+//	default: // n=3 m=5
+//		break;
+//	}
+//	printf("m = %d, n = %d\n", m, n);
+//	return 0;
+//}
+
+//int main()
+//{
+//	printf("%c\n",65);
+//	return 0;
+//}
+
+//int main()
+//{
+//	printf("%d\n", strlen("c:\test\328\test.c"));
+//	return 0;
+//}
+
+//int main()
+//{
+//	问题1：在屏幕上打印一个单引号'，怎么做？
+//	问题2：在屏幕上打印一个字符串，字符串的内容是一个双引号“，怎么做？
+//	printf("%c\n", '\'');
+//	printf("%s\n", "\"");
+//	return 0;
+//}
+
+////下面代码，打印结果是什么？为什么？（突出'\0'的重要性）
+//int main()
+//{
+//	char arr1[] = "bit";
+//	char arr2[] = { 'b', 'i', 't' };
+//	char arr3[] = { 'b', 'i', 't', '\0' };
+//	printf("%s\n", arr1);
+//	printf("%s\n", arr2);
+//	printf("%s\n", arr3);
+//	return 0;
+//}
+
+
+//void fun(char* arr, int length)
+//{
+//	int count = 0;
+//	int i = 0;
+//	for (i = 0; i < length; i++)
+//	{
+//		if (arr[i] == ' ')
+//		{
+//			count++;
+//		}
+//	}
+//	int size = length + 2 * count - 1;
+//	for (i = length-1 ; i >= 0; i--)
+//	{
+//		if (arr[i] == ' ')
+//		{
+//			arr[size--] = '0';
+//			arr[size--] = '2';
+//			arr[size--] = '%';
+//		}
+//		else
+//		{
+//			arr[size--] = arr[i];
+//		}
+//	}
+//}
+//
+//int main()
+//{
+//	char* arr = "We are happy.";
+//	int length = strlen(arr);
+//	fun(arr, length);
+//	printf("%s\n", arr);
+//	return 0;
+//}
 
 //int main()
 //{
