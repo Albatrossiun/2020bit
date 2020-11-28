@@ -6,7 +6,30 @@
 #include <ctype.h>
 #include <math.h>
 #include <windows.h>
- 
+
+//void print(int num)
+//{
+//	if (num > 9)
+//	{
+//		print(num / 10);
+//	}
+//	printf("%d", (num % 10));
+//}
+//
+//int main()
+//{
+//	int num = 1357;
+//	print(num);
+//	return 0;
+//}
+
+//int main()
+//{
+//	printf("%d", printf("%d", printf("%d", 43)));
+//	//½á¹ûÊÇÉ¶£¿
+//	return 0;
+//}
+
 //int main()
 //{
 //	int arr[] = { 1,2,3,4,5,6,7,8,9,10 };
