@@ -7,6 +7,56 @@
 #include <math.h>
 #include <windows.h>
 
+//int fib(int n) {
+//	int result;
+//	int pre_result;
+//	int next_older_result;
+//	result = pre_result = 1;
+//	while (n > 2)
+//	{
+//		n -= 1;
+//		next_older_result = pre_result;
+//		pre_result = result;
+//		result = pre_result + next_older_result;
+//	}
+//	return result;
+//}
+//求第n个斐波那契数
+//1、1、2、3、5、8、13、21、34、……
+int fib(int n) {
+	if (n <= 2)
+		return 1;
+	else
+		return fib(n - 1) + fib(n - 2);
+}
+
+int main()
+{
+	int n = 8;
+	printf("%d\n", fib(n));
+	return 0;
+}
+
+//int Strlen(const char* str)
+//{
+//	int count = 0;
+//	if (*str == '\0')
+//		return 0;
+//	else
+//	{
+//		count = 1 + Strlen(str + 1);
+//		return count;
+//	}
+//}
+//
+//int main()
+//{
+//	char* p = "abcdef";
+//	int len = Strlen(p);
+//	printf("%d\n", len);
+//	return 0;
+//}
+
 //void print(int num)
 //{
 //	if (num > 9)
