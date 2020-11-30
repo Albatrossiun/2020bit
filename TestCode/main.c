@@ -7,6 +7,50 @@
 #include <math.h>
 #include <windows.h>
 
+//void fun(int* arr, int size)
+//{
+//	int i = 0;
+//	int j = 0;
+//	for (i = 0; i < size-1; i++)
+//	{
+//		for (j = 0; j < size - 1 - i; j++)
+//		{
+//			if (arr[j] >= arr[j + 1])
+//			{
+//				int tmp = arr[j];
+//				arr[j] = arr[j + 1];
+//				arr[j + 1] = tmp;
+//			}
+//		}
+//	}
+//}
+//int main()
+//{
+//	int arr[] = { 3,5,1,7,9,2 };
+//	int size = sizeof(arr) / sizeof(arr[0]);
+//	int i = 0;
+//	for (i = 0; i < size; i++)
+//	{
+//		printf("%d", arr[i]);
+//	}
+//	printf("\n");
+//	fun(arr, size);
+//	for (i = 0; i < size; i++)
+//	{
+//		printf("%d", arr[i]);
+//	}
+//	return 0;
+//}
+
+//int main()
+//{
+//	int arr[] = { 1,2,4,6,8 };
+//	printf("%d\n", sizeof(arr));	//	20
+//	printf("%d\n", sizeof(*(&arr)));	//	20
+//	printf("%d\n", sizeof(arr[0]));	//	4
+//	return 0;
+//}
+
 //int fib(int n) {
 //	int result;
 //	int pre_result;
@@ -23,19 +67,19 @@
 //}
 //求第n个斐波那契数
 //1、1、2、3、5、8、13、21、34、……
-int fib(int n) {
-	if (n <= 2)
-		return 1;
-	else
-		return fib(n - 1) + fib(n - 2);
-}
-
-int main()
-{
-	int n = 8;
-	printf("%d\n", fib(n));
-	return 0;
-}
+//int fib(int n) {
+//	if (n <= 2)
+//		return 1;
+//	else
+//		return fib(n - 1) + fib(n - 2);
+//}
+//
+//int main()
+//{
+//	int n = 8;
+//	printf("%d\n", fib(n));
+//	return 0;
+//}
 
 //int Strlen(const char* str)
 //{
