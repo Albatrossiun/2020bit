@@ -7,6 +7,92 @@
 #include <math.h>
 #include <windows.h>
 
+//赋值操作符
+
+int main()
+{
+	int num = 15;
+	int i = 0;
+	int count = 0;//计数
+	while (num)
+	{
+		count++;
+		num = num & (num - 1);
+	}
+	//	1111&1110=1110 1110&1101=1100 1100&1011=1000 1000&0111=0000
+	//	0110&0101=0100 0100&0011=0000
+	printf("二进制中1的个数 = %d\n", count);
+	return 0;
+}
+//int main()
+//{
+//	int num = 15;
+//	int i = 0;
+//	int num1 = 32;
+//	int count = 0;
+//	while (num1)
+//	{
+//		if (((num >> (i++))&1) == 1)
+//			count++;
+//		num1--;
+//	}
+//	printf("%d\n", count);
+//	return 0;
+//}
+//int main()
+//{
+//	int num = 15;	//	1111
+//	int count = 0;
+//	while (1)
+//	{
+//		if (num == 0)
+//			break;
+//		if (num % 2 == 1)
+//		{
+//			count++;
+//		}
+//		num = num / 2;
+//	}
+//	printf("%d\n", count);
+//	return 0;
+//}
+//int main()
+//{
+//	int num = 10;	//	1010、0101、0010、0001
+//	int count = 0;	//	计数
+//	while (num)
+//	{
+//		if (num % 2 == 1)
+//			count++;
+//		num = num / 2;
+//	}
+//	printf("二进制中1的个数 = %d\n", count);
+//	return 0;
+//}
+
+//int main()
+//{
+//	int a = 1;	//	001
+//	int b = 5;	//	101
+//	a = a ^ b;	//	100
+//	b = a ^ b;	//	001
+//	a = a ^ b;	//	101
+//	printf("a = %d b = %d\n", a, b);
+//	return 0;
+//}
+
+//int main()
+//{
+//	int num1 = 1;	//	001
+//	int num2 = 2;	//	010
+//	int a, b, c;
+//	a = num1 & num2;
+//	b = num1 | num2;
+//	c = num1 ^ num2;
+//	printf("%d %d %d\n", a, b, c);	//	0	3	3
+//	return 0;
+//}
+
 //void fun(int* arr, int size)
 //{
 //	int i = 0;
