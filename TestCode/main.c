@@ -7,23 +7,98 @@
 #include <math.h>
 #include <windows.h>
 
-//赋值操作符
+//int main()
+//{
+//	char* arr = "abcdefg";
+//	printf("%s\n", strchr(arr, 'd'));
+//	return 0;
+//}
 
-int main()
-{
-	int num = 15;
-	int i = 0;
-	int count = 0;//计数
-	while (num)
-	{
-		count++;
-		num = num & (num - 1);
-	}
-	//	1111&1110=1110 1110&1101=1100 1100&1011=1000 1000&0111=0000
-	//	0110&0101=0100 0100&0011=0000
-	printf("二进制中1的个数 = %d\n", count);
-	return 0;
-}
+//int main()
+//{
+//	int a = 3;
+//	int b;
+//	b = (a > 5) ? 3 : 5;
+//	printf("%d\n", b);
+//	return 0;
+//}
+
+//int main()
+//{
+//	int i = 0, a = 0, b = 2, c = 3, d = 4;
+//	//i = a++ && ++b && d++;
+//	i = a++||++b||d++;
+//	//	1	3	3	4	1
+//	printf("a = %d\n b = %d\n c = %d\nd = %d\ni = %d\n", a, b, c, d, i);
+//	return 0;
+//}
+
+//int main()
+//{
+//	int a = 10;
+//	int x = ++a;
+//	int y = --a;
+//	printf("%d %d %d\n", a, x, y);	//	10	11	10
+//	return 0;
+//}
+//int main()
+//{
+//	int a = 10;
+//	int y = a--;
+//	printf("%d %d\n", a, y);
+//	return 0;
+//}
+
+//void test1(int arr[])
+//{
+//	printf("%d\n", sizeof(arr));	//	指针变量的大小
+//}
+//void test2(char ch[])
+//{
+//	printf("%d\n", sizeof(ch));	//	指针变量的大小
+//}
+//int main()
+//{
+//	int arr[10] = { 0 };
+//	char ch[10] = { 0 };
+//	printf("%d\n", sizeof(arr));	//	40
+//	printf("%d\n", sizeof(ch));	//	10
+//	test1(arr);	//	4
+//	test2(ch);	//	4
+//	return 0;
+//}
+
+////赋值操作符
+//int main()
+//{
+//	int a = -10;
+//	int* p = NULL;
+//	printf("%d\n", !2);
+//	printf("%d\n", !0);
+//	a = -a;
+//	p = &a;
+//	printf("%d\n", sizeof(a));
+//	printf("%d\n", sizeof(int));	//	字节
+//	printf("%d\n", sizeof a);	//	这样写行不行？
+//	return 0;
+//}
+
+
+//int main()
+//{
+//	int num = 15;
+//	int i = 0;
+//	int count = 0;//计数
+//	while (num)
+//	{
+//		count++;
+//		num = num & (num - 1);
+//	}
+//	//	1111&1110=1110 1110&1101=1100 1100&1011=1000 1000&0111=0000
+//	//	0110&0101=0100 0100&0011=0000
+//	printf("二进制中1的个数 = %d\n", count);
+//	return 0;
+//}
 //int main()
 //{
 //	int num = 15;
