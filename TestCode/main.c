@@ -7,6 +7,126 @@
 #include <math.h>
 #include <windows.h>
 
+void reverse(int* nums, int start, int end)
+{
+    while (start <= end)
+    {
+        nums[start] = nums[start] ^ nums[end];  //  与自身[异或]始终为零
+        nums[end] = nums[start] ^ nums[end];
+        nums[start] = nums[start] ^ nums[end];
+        start++;
+        end--;
+    }
+}
+
+void rotate(int* nums, int numsSize, int k)
+{
+    k %= numsSize;
+    reverse(nums, 0, numsSize - k - 1);
+    reverse(nums, numsSize - k, numsSize - 1);
+    reverse(nums, 0, numsSize - 1);
+}
+
+int main()
+{
+    int i = 0;
+    int arr[] = { 1,2,3,4,5,6 };
+    for (i = 0; i < 6; i++)
+    {
+        printf("%d ", arr[i]);
+    }
+    rotate(arr, 6, 2);
+    printf("\n");
+    for (i = 0; i < 6; i++)
+    {
+        printf("%d ", arr[i]);
+    }
+    return 0;
+}
+
+////删除排序数组中的重复项
+//int main()
+//{
+//	int arr[] = { 0,1,1,2,2,3,3,3,4 };	//	arr[]={ 0,1,2,3,4 }
+//	int size = sizeof(arr) / sizeof(arr[0]);
+//	int start = 0;
+//	int end = start;
+//	int index = 1;
+//	while (end < size)
+//	{
+//		if (arr[start] != arr[end])
+//		{
+//			start = end;
+//			arr[index++] = arr[start];
+//		}
+//		end++;
+//	}
+//	int i = 0;
+//	for (i = 0; i < size ; i++)
+//	{
+//		printf("%d ", arr[i]);
+//	}
+//	return 0;
+//}
+
+////寻找两个不同的数字->arr[]={1,1,2,2,3,4}
+//int* singleNumbers(int* nums, int numsSize, int* returnSize) {
+//	int num = 0;
+//	int* p = nums;
+//	for (int i = 0; i < numsSize; i++) {
+//		num = num ^ nums[i];
+//	}
+//	int index = 0;
+//	while (index < 32) {
+//		if (((num >> index) & 0x01) != 0x00) {
+//			break;
+//		}
+//		index++;
+//	}
+//	int a = 0;
+//	int b = 0;
+//	for (int i = 0; i < numsSize; i++) {
+//		int tmp = nums[i];
+//		if (((tmp >> index) & 0x01) == 0x01) {
+//			a = a ^ tmp;
+//		}
+//		else {
+//			b = b ^ tmp;
+//		}
+//	}
+//	int* ret = (int*)malloc(sizeof(int) * 2);
+//	ret[0] = a;
+//	ret[1] = b;
+//	*returnSize = 2;
+//	return ret;
+//}
+
+//int main()
+//{
+//	int arr[] = { 1,1,2,2,3,3,4,5 };	//	4->0100	5->0101
+//	int i = 0;
+//	int tmp = arr[0];
+//	for (i = 1; i < 8; i++)
+//	{
+//		tmp = tmp ^ arr[i];
+//	}
+//	int tmp1 = 0;
+//	for (i = 0; i < 8; i++)
+//	{
+//		if ((arr[i] & 1) == 0)
+//		{
+//			tmp1 ^= arr[i];
+//		}
+//	}
+//	int tmp2 = tmp1;
+//	for (i = 0; i < 8; i++)
+//	{
+//		tmp2 = tmp2 ^ arr[i];
+//	}
+//	printf("%d %d\n", tmp1, tmp2);
+//	return 0;
+//}
+
 //int main()
 //{
 //	char* arr = "abcdefg";
