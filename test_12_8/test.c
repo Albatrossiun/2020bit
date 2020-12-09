@@ -1,5 +1,5 @@
 #include <stdio.h>
-
+#include <stdlib.h>
 
 typedef int LDataType;
 
@@ -151,6 +151,19 @@ void listDestroy(list* lst)
 	lst->_head = NULL;
 }
 
+//打印链表数据
+void listPrint(list* lst)
+{
+	if (lst == NULL || lst->_head == NULL)
+		return;
+	listNode* node = lst->_head;
+	while (node)
+	{
+		printf("%d ", node->_data);
+		node = node->_next;
+	}
+}
+
 //测试函数
 void test()
 {
@@ -165,7 +178,8 @@ void test()
 	listInterAfter((sl._head->_next), 5);
 	listErasetAfter((sl._head));
 	listNode* new = listFind(&sl, 3);
-	printf("%d\n", new->_next->_data);
+	printf("%d\n", new->_data);
+	listPrint(&sl);
 }
 
 //主函数
