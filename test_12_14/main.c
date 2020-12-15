@@ -5,6 +5,48 @@
 
 
 
+
+//对于一个链表，请设计一个时间复杂度为O(n),额外空间复杂度为O(1)的算法
+//判断其是否为回文结构。
+//给定一个链表的头指针A，请返回一个bool值，代表其是否为回文结构
+//保证链表长度小于等于900。
+//class PalindromeList
+//{
+//public:
+//    bool chkPalindrome(ListNode* A)
+//    {
+//        if (A == NULL || A->next == NULL)
+//            return true;
+//        ListNode* newHead, * fast, * slow, * next;
+//        newHead = NULL;
+//        fast = slow = A;
+//        while (fast && fast->next)
+//        {
+//            fast = fast->next;
+//            slow = slow->next;
+//        }
+//        while (slow->next)
+//        {
+//            next = slow->next;
+//            slow->next = newHead;
+//            newHead = slow;
+//            slow = next;
+//        }
+//        while (slow && A)
+//        {
+//            if (slow->val != A->val)
+//                return false;
+//            A = A->next;
+//            slow = slow->next;
+//        }
+//        return true;
+//    }
+//};
+
+
+
+
+
 //输入一个链表，输出该链表中倒数第k个结点
 //ListNode* FindKthToTail(ListNode* pListHead, unsigned int k)
 //{
