@@ -1,0 +1,2 @@
+E:\Code\2020bit\test_2021_1_12_circular_list\Debug\test_2021_1_12_circular_list.exe
+E:\Code\2020bit\test_2021_1_12_circular_list\Debug\test_2021_1_12_circular_list.pdb

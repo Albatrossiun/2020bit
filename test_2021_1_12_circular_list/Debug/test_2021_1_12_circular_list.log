@@ -1,0 +1,6 @@
+﻿  test.c
+E:\Code\2020bit\test_2021_1_12_circular_list\test.c(15,37): warning C4013: “malloc”未定义；假设外部返回 int
+E:\Code\2020bit\test_2021_1_12_circular_list\test.c(30,7): warning C4013: “free”未定义；假设外部返回 int
+E:\Code\2020bit\test_2021_1_12_circular_list\test.c(105,3): warning C4033: “ListFind”必须返回值
+E:\Code\2020bit\test_2021_1_12_circular_list\test.c(114): warning C4715: “ListFind”: 不是所有的控件路径都返回值
+  test_2021_1_12_circular_list.vcxproj -> E:\Code\2020bit\test_2021_1_12_circular_list\Debug\test_2021_1_12_circular_list.exe
