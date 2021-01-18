@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <assert.h>
 #include <stdbool.h>
+#include <math.h>
 
 typedef int QDataType;
 typedef struct QListNode
@@ -17,13 +18,12 @@ typedef struct Queue
 }Queue;
 
 // 初始化队列 
-void QueueInit(Queue** q)
+void QueueInit(Queue* q)
 {
 	if (q == NULL)
 		return;
-	(*q) = (Queue*)malloc(sizeof(Queue));
-	(*q)->_front = NULL;
-	(*q)->_rear = NULL;
+	q->_front = NULL;
+	q->_rear = NULL;
 }
 
 // 队尾入队列 
@@ -112,15 +112,15 @@ void QueueDestroy(Queue* q)
 
 void test()
 {
-	Queue* q;
+	Queue q;
 	QueueInit(&q);
-	QueuePush(q, 2);
-	QueuePush(q, 4);
-	QueuePush(q, 6);
-	QueuePush(q, 8);
-	QueuePop(q);
-	int count = QueueSize(q);
-	QNode* cur = q->_front;
+	QueuePush(&q, 2);
+	QueuePush(&q, 4);
+	QueuePush(&q, 6);
+	QueuePush(&q, 8);
+	QueuePop(&q);
+	int count = QueueSize(&q);
+	QNode* cur = q._front;
 	while(count)
 	{
 		count--;
@@ -142,7 +142,7 @@ typedef struct
 {
 	int _front;
 	int _rear;
-	int _k;
+	int _k;	//	循环队列存储数据的有效个数
 	int* _data;
 }MyCircularQueue;
 
@@ -210,9 +210,35 @@ int myCircularQueueRear(MyCircularQueue* obj)
 		return obj->_data[obj->_rear - 1];
 }
 
+int myCircularQueueSize(MyCircularQueue* obj)
+{
+	return (obj->_rear - obj->_front + obj->_k + 1) % (obj->_k + 1);
+}
+
 
 void myCircularQueueFree(MyCircularQueue* obj)
 {
 	free(obj->_data);
 	free(obj);
 }
+
+//void test()
+//{
+//	MyCircularQueue* obj;
+//	obj = myCircularQueueCreate(5);
+//
+//	myCircularQueueEnQueue(obj, 2);
+//	myCircularQueueEnQueue(obj, 4);
+//	myCircularQueueEnQueue(obj, 6);
+//	myCircularQueueDeQueue(obj);
+//	myCircularQueueEnQueue(obj, 6);
+//	myCircularQueueDeQueue(obj);
+//
+//	printf("%d", myCircularQueueSize(obj));
+//}
+//
+//int main()
+//{
+//	test();
+//	return 0;
+//}

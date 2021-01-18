@@ -12,26 +12,22 @@ typedef struct Stack
 }Stack;
 
 // ³õÊ¼»¯Õ» 
-void StackInit(Stack** ps)
+void StackInit(Stack* ps)
 {
-	(*ps) = (Stack*)malloc(sizeof(Stack));
-	(*ps)->_top = 0;
-	(*ps)->_capacity = 0;
-	(*ps)->_a = NULL;
+	if (ps == NULL)
+		return;
+	ps->_top = 0;
+	ps->_capacity = 0;
+	ps->_a = NULL;
 }
 
 // Õ»ÈÝÁ¿¼ì²â
 void StackCheck(Stack* ps)
 {
-	if (ps == NULL)
-		return;
 	if(ps->_top==ps->_capacity)
 	{
 		int newcapacity = (ps->_capacity == 0 ? 1 : 2 * ps->_capacity);
-		if (newcapacity == 1)
-			ps->_a = (STDataType*)malloc(sizeof(STDataType));
-		else
-			ps->_a = (STDataType*)realloc(ps->_a, sizeof(STDataType) * newcapacity);
+		ps->_a = (STDataType*)realloc(ps->_a, sizeof(STDataType) * newcapacity);
 		ps->_capacity = newcapacity;
 	}
 }
@@ -39,11 +35,8 @@ void StackCheck(Stack* ps)
 // ÈëÕ» 
 void StackPush(Stack* ps, STDataType data)
 {
-	if (ps == NULL)
-		return;
 	StackCheck(ps);
-	ps->_a[ps->_top] = data;
-	ps->_top++;
+	ps->_a[ps->_top++] = data;
 }
 
 // ³öÕ» 
@@ -94,19 +87,19 @@ void StackDestroy(Stack* ps)
 void test()
 {
 
-	Stack* ps;
+	Stack ps;
 	StackInit(&ps);
-	StackPush(ps, 2);
-	StackPush(ps, 4);
-	StackPush(ps, 6);
-	StackPush(ps, 8);
-	StackPop(ps);
-	StackPop(ps);
-	STDataType element = StackTop(ps);
+	StackPush(&ps, 2);
+	StackPush(&ps, 4);
+	StackPush(&ps, 6);
+	StackPush(&ps, 8);
+	StackPop(&ps);
+	StackPop(&ps);
+	STDataType element = StackTop(&ps);
 	printf("get the top element:%d\n", element);
-	int count = StackSize(ps);
+	int count = StackSize(&ps);
 	printf("count:%d\n", count);
-	int empty = StackEmpty(ps);
+	int empty = StackEmpty(&ps);
 	printf("empty:%d\n", empty);
 }
 

@@ -1,15 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <assert.h>
-
-typedef char BTDataType;
-
-typedef struct BinaryTreeNode
-{
-	BTDataType _data;
-	struct BinaryTreeNode* _left;
-	struct BinaryTreeNode* _right;
-}BTNode;
+#include "queue.h"
+#include "btree.h"
 
 // 通过前序遍历的数组"ABD##E#H##CF##G##"构建二叉树
 BTNode* BinaryTreeCreate(BTDataType* src, int n, int* idx)
@@ -120,10 +113,55 @@ void BinaryTreePostOrder(BTNode* root)
 }
 
 // 层序遍历
-void BinaryTreeLevelOrder(BTNode* root);
+void BinaryTreeLevelOrder(BTNode* root)
+{
+	Queue q;
+	QueueInit(&q);
+	if (root)
+		QueuePush(&q, root);
+	while (!QueueEmpty(&q))
+	{
+		BTNode* node = QueueFront(&q);
+		QueuePop(&q);
+
+		printf("%c ", node->_data);
+		if (node->_left)
+			QueuePush(&q, node->_left);
+		if (node->_right)
+			QueuePush(&q, node->_right);
+	}
+	printf("\n");
+}
 
 // 判断二叉树是否是完全二叉树
-int BinaryTreeComplete(BTNode* root);
+int BinaryTreeComplete(BTNode* root)
+{
+	Queue q;
+	QueueInit(&q);
+	if (root)
+		QueuePush(&q, root);
+	while (!QueueEmpty(&q))
+	{
+		BTNode* node = QueueFront(&q);
+		QueuePop(&q);
+
+		if (node)
+		{
+			QueuePush(&q, node->_left);
+			QueuePush(&q, node->_right);
+		}
+		else
+			break;
+	}
+	while (!QueueEmpty(&q))
+	{
+		BTNode* node = QueueFront(&q);
+		QueuePop(&q);
+		if (node)
+			return 0;
+	}
+	return 1;
+}
 
 // 二叉树深度
 int BinaryTreeHeight(BTNode* root)
@@ -144,6 +182,9 @@ void test()
 	printf("\n");
 	BinaryTreePostOrder(node);
 	printf("\n");
+	BinaryTreeLevelOrder(node);
+	printf("\n");
+	printf("%d ", BinaryTreeComplete(node));
 }
 
 int main()
