@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <assert.h>
+
 // 支持动态增长的栈
 typedef int STDataType;
 typedef struct Stack
@@ -11,11 +12,12 @@ typedef struct Stack
 }Stack;
 
 // 初始化栈 
-void StackInit(Stack* ps)
+void StackInit(Stack** ps)
 {
-	ps->_top = 0;
-	ps->_capacity = 0;
-	ps->_a = NULL;
+	(*ps) = (Stack*)malloc(sizeof(Stack));
+	(*ps)->_top = 0;
+	(*ps)->_capacity = 0;
+	(*ps)->_a = NULL;
 }
 
 // 栈容量检测
@@ -26,7 +28,7 @@ void StackCheck(Stack* ps)
 	if(ps->_top==ps->_capacity)
 	{
 		int newcapacity = (ps->_capacity == 0 ? 1 : 2 * ps->_capacity);
-		if(newcapacity==1)
+		if (newcapacity == 1)
 			ps->_a = (STDataType*)malloc(sizeof(STDataType));
 		else
 			ps->_a = (STDataType*)realloc(ps->_a, sizeof(STDataType) * newcapacity);
@@ -91,8 +93,9 @@ void StackDestroy(Stack* ps)
 
 void test()
 {
-	Stack* ps = (Stack*)malloc(sizeof(Stack));
-	StackInit(ps);
+
+	Stack* ps;
+	StackInit(&ps);
 	StackPush(ps, 2);
 	StackPush(ps, 4);
 	StackPush(ps, 6);

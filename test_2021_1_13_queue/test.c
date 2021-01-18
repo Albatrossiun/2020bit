@@ -17,12 +17,13 @@ typedef struct Queue
 }Queue;
 
 // 初始化队列 
-void QueueInit(Queue* q)
+void QueueInit(Queue** q)
 {
 	if (q == NULL)
 		return;
-	q->_front = NULL;
-	q->_rear = NULL;
+	(*q) = (Queue*)malloc(sizeof(Queue));
+	(*q)->_front = NULL;
+	(*q)->_rear = NULL;
 }
 
 // 队尾入队列 
@@ -53,6 +54,7 @@ void QueuePop(Queue* q)
 	QNode* next = q->_front->_next;
 	free(q->_front);
 	q->_front = next;
+	
 	if (q->_front == NULL)
 		q->_rear = NULL;
 }
@@ -81,8 +83,8 @@ int QueueSize(Queue* q)
 	int count = 0;
 	while (cur)
 	{
-		cur = cur->_next;
 		count++;
+		cur = cur->_next;
 	}
 	return count;
 }
@@ -110,8 +112,8 @@ void QueueDestroy(Queue* q)
 
 void test()
 {
-	Queue* q = (Queue*)malloc(sizeof(Queue));
-	QueueInit(q);
+	Queue* q;
+	QueueInit(&q);
 	QueuePush(q, 2);
 	QueuePush(q, 4);
 	QueuePush(q, 6);
