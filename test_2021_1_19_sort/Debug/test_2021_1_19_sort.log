@@ -1,0 +1,4 @@
+﻿  sort.c
+E:\Code\2020bit\test_2021_1_19_sort\sort.c(27,30): warning C4013: “ReferencePosition”未定义；假设外部返回 int
+E:\Code\2020bit\test_2021_1_19_sort\sort.c(40): warning C4716: “ReferencePositionNonRecursion”: 必须返回一个值
+  test_2021_1_19_sort.vcxproj -> E:\Code\2020bit\test_2021_1_19_sort\Debug\test_2021_1_19_sort.exe
