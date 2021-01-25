@@ -2,6 +2,101 @@
 #include <stdlib.h>
 #include "list.h"
 
+// 时间复杂度：O(Max(n,range))
+// 空间复杂度：O(range)---->如果范围特别多，浪费空间大
+// 计数排序
+void CountSort(int* arr, int n)
+{
+	int min = arr[0];
+	int max = arr[0];
+	int i = 0;
+	for (i; i < n; i++)
+	{
+		if (arr[i] < min)
+			min = arr[i];
+		if (arr[i] > max)
+			max = arr[i];
+	}
+	int range = max - min + 1;
+	int* countArr = (int*)calloc(range, sizeof(int));
+	for (i = 0; i < n; i++)
+	{
+		countArr[arr[i] - min]++;
+	}
+	int idx = 0;
+	for (i = 0; i < range; i++)
+	{
+		while (countArr[i]--)
+		{
+			arr[idx++] = i + min;
+		}
+	}
+}
+
+// 归并函数——归并排序
+void Merge(int* arr, int begin, int mid, int end, int* tmp)
+{
+	int begin1 = begin;
+	int end1 = mid;
+	int begin2 = mid + 1;
+	int end2 = end;
+	int idx = begin;
+	while (begin1 <= end1 && begin2 <= end2)
+	{
+		if (arr[begin1] <= arr[begin2])
+			tmp[idx++] = arr[begin1++];
+		else
+			tmp[idx++] = arr[begin2++];
+	}
+	if (begin1 <= end1)
+		memcpy(tmp + idx, arr + begin1, sizeof(int) * (end1 - begin1 + 1));
+	if (begin2 <= end2)
+		memcpy(tmp + idx, arr + begin2, sizeof(int) * (end2 - begin2 + 1));
+	memcpy(arr + begin, tmp + begin, sizeof(int) * (end - begin + 1));
+}
+
+// 递归归并排序
+void MergeSortRecursion(int* arr, int begin, int end, int* tmp)
+{
+	if (begin >= end)
+		return;
+	int mid = begin + (end - begin) / 2;
+	MergeSortRecursion(arr, begin, mid, tmp);
+	MergeSortRecursion(arr, mid + 1, end, tmp);
+	Merge(arr, begin, mid, end, tmp);
+}
+
+// 归并函数
+void MergeSort(int* arr, int n)
+{
+	int* tmp = (int*)malloc(sizeof(int) * n);
+	MergeSortRecursion(arr, 0, n - 1, tmp);
+	free(tmp);
+}
+
+// 非递归归并排序
+void MergeSortNonRecursion(int* arr, int n)
+{
+	int* tmp = (int*)malloc(sizeof(int) * n);
+	int step = 1;
+	while (step < n)
+	{
+		int idx = 0;
+		for (idx = 0; idx < n; idx += 2 * step)
+		{
+			int begin = idx;
+			int mid = idx + step - 1;
+			if (mid >= n - 1)
+				continue;
+			int end = idx + 2 * step - 1;
+			if (end > n - 1)
+				end = n - 1;
+			Merge(arr, begin, mid, end, tmp);
+		}
+		step *= 2;
+	}
+}
+
 // 交换函数
 void Swap(int* arr, int i, int j)
 {
@@ -38,7 +133,6 @@ int ReferencePositionNonRecursion(int* arr, int n)
 		}
 	}
 }
-
 
 // Pointer排序——快速排序
 int ReferencePositionPointer(int* arr, int begin, int end)
@@ -142,7 +236,7 @@ void QuickSort(int* arr, int begin, int end)
 {
 	if (begin >= end)
 		return;
-	int refposition = ReferencePositionPointer(arr, begin, end);
+	int refposition = ReferencePosition(arr, begin, end);
 	QuickSort(arr, begin, refposition - 1);
 	QuickSort(arr, refposition + 1, end);
 }
@@ -161,7 +255,7 @@ void BubbleSort(int* arr, int n)
 		{
 			if (arr[j + 1] < arr[j])
 			{
-				Swap(arr, i, j);
+				Swap(arr, j + 1, j);
 				flag = 1;
 			}
 		}
@@ -169,7 +263,6 @@ void BubbleSort(int* arr, int n)
 			break;
 	}
 }
-
 
 // 堆的向下调整（小堆）
 void HeapShiftDown(int* arr, int n, int curPos)
@@ -201,8 +294,8 @@ void HeapSort(int* arr, int n)
 	end = n - 1;
 	while (end > 0)
 	{
-		Swap(arr, end, 0);
-		HeapShiftDown(arr, end, 0);
+		Swap(arr, end, 0);	//	交换第一个和最后一个节点
+		HeapShiftDown(arr, end, 0);	//	向下调整n-1个节点
 		end--;
 	}
 }
@@ -231,10 +324,7 @@ void ImprovedSelectSort(int* arr, int n)
 		start++;
 		end--;
 	}
-	
 }
-
-
 
 // 老师写的选择排序
 // O(n^2)
@@ -289,7 +379,7 @@ void InsertSort(int* arr, int n)
 	{
 		int end = i - 1;
 		int data = arr[i];
-		while (end >= 0 && arr[end] > arr[i])
+		while (end >= 0 && arr[end] > data)
 		{
 			arr[end + 1] = arr[end];
 			end--;
@@ -300,8 +390,8 @@ void InsertSort(int* arr, int n)
 
 int main()
 {
-	int arr[] = { 5,1,4,3,2 };
-	ReferencePositionNonRecursion(arr, 5);
+	int arr[] = {5,2,3,1 };
+	QuickSort(arr, 0,3);
 	printf("\n");
 	return 0;
 }

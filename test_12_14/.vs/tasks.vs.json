@@ -1,0 +1,10 @@
+{
+  "version": "0.2.1",
+  "tasks": [
+    {
+      "taskLabel": "任务-list_example",
+      "appliesTo": "list_example.c",
+      "type": "launch"
+    }
+  ]
+}

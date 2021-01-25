@@ -1,5 +1,0 @@
-﻿  test.c
-E:\Code\2020bit\test_12_8\test.c(73,14): warning C4553: “==”: 未使用表达式结果；是否打算使用“=”?
-E:\Code\2020bit\test_12_8\test.c(126,3): warning C4033: “listFind”必须返回值
-E:\Code\2020bit\test_12_8\test.c(137): warning C4715: “listFind”: 不是所有的控件路径都返回值
-  test_12_8.vcxproj -> E:\Code\2020bit\test_12_8\Debug\test_12_8.exe
