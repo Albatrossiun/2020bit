@@ -147,7 +147,7 @@ int HeapSize(Heap* hp)
 int HeapEmpty(Heap* hp)
 {
 	assert(hp);
-	return hp->_size == 0 ? 0 : 1;
+	return hp->_size == 0;
 }
 
 // 对数组进行堆排序
@@ -167,60 +167,60 @@ void HeapSort(int* a, int n)
 	}
 }
 
-//int main()
-//{
-//	int a[4] = {1,2,3,4};
-//	HeapSort(a, 4);
-//	int i = 0;
-//	for (i; i < 4; i++)
-//	{
-//		printf("%d ", a[i]);
-//	}
-//	printf("\n");
-//	return 0;
-//}
-
-void PrintTopk(int* a, int n, int k)
-{
-	Heap hp;
-	HeapCreate(&hp, a, n);
-	int end = n - 1;
-	while (end > 0)
-	{
-		Swap(&(hp._a[0]), &(hp._a[end]));
-		HeapShiftDown(hp._a, end, 0);
-		end--;
-	}
-	int i = 0;
-	for (i; i < k; i++)
-	{
-		printf("%d ", hp._a[i]);
-	}
-}
-void TestTopk()
-{
-	int n = 10000;
-	int* a = (int*)malloc(sizeof(int) * n);
-	srand(time(0));
-	for (int i = 0; i < n; ++i)
-	{
-		a[i] = rand() % 1000000;
-	}
-	a[5] = 1000000 + 1;
-	a[1231] = 1000000 + 2;
-	a[531] = 1000000 + 3;
-	a[5121] = 1000000 + 4;
-	a[115] = 1000000 + 5;
-	a[2335] = 1000000 + 6;
-	a[9999] = 1000000 + 7;
-	a[76] = 1000000 + 8;
-	a[423] = 1000000 + 9;
-	a[3144] = 1000000 + 10;
-	PrintTopk(a, n, 10);
-}
-
 int main()
 {
-	TestTopk();
+	int a[4] = { 2,1,4,3 };
+	HeapSort(a, 4);
+	int i = 0;
+	for (i; i < 4; i++)
+	{
+		printf("%d ", a[i]);
+	}
+	printf("\n");
 	return 0;
 }
+
+//void PrintTopk(int* a, int n, int k)
+//{
+//	Heap hp;
+//	HeapCreate(&hp, a, n);
+//	int end = n - 1;
+//	while (end > 0)
+//	{
+//		Swap(&(hp._a[0]), &(hp._a[end]));
+//		HeapShiftDown(hp._a, end, 0);
+//		end--;
+//	}
+//	int i = 0;
+//	for (i; i < k; i++)
+//	{
+//		printf("%d ", hp._a[i]);
+//	}
+//}
+//void TestTopk()
+//{
+//	int n = 10000;
+//	int* a = (int*)malloc(sizeof(int) * n);
+//	srand(time(0));
+//	for (int i = 0; i < n; ++i)
+//	{
+//		a[i] = rand() % 1000000;
+//	}
+//	a[5] = 1000000 + 1;
+//	a[1231] = 1000000 + 2;
+//	a[531] = 1000000 + 3;
+//	a[5121] = 1000000 + 4;
+//	a[115] = 1000000 + 5;
+//	a[2335] = 1000000 + 6;
+//	a[9999] = 1000000 + 7;
+//	a[76] = 1000000 + 8;
+//	a[423] = 1000000 + 9;
+//	a[3144] = 1000000 + 10;
+//	PrintTopk(a, n, 10);
+//}
+//
+//int main()
+//{
+//	TestTopk();
+//	return 0;
+//}

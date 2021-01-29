@@ -1,0 +1,2 @@
+E:\Code\2020bit\test_2021_1_26_linkedlist\Debug\test_2021_1_26_linkedlist.exe
+E:\Code\2020bit\test_2021_1_26_linkedlist\Debug\test_2021_1_26_linkedlist.pdb

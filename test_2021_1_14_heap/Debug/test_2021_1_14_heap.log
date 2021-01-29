@@ -1,3 +1,2 @@
 ﻿  test.c
-E:\Code\2020bit\test_2021_1_14_heap\test.c(204,12): warning C4013: “time”未定义；假设外部返回 int
   test_2021_1_14_heap.vcxproj -> E:\Code\2020bit\test_2021_1_14_heap\Debug\test_2021_1_14_heap.exe

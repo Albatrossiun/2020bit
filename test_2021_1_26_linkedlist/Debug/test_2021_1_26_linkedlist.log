@@ -1,0 +1,4 @@
+﻿  linkedlist.c
+E:\Code\2020bit\test_2021_1_26_linkedlist\linkedlist.c(108,3): warning C4033: “ListFind”必须返回值
+E:\Code\2020bit\test_2021_1_26_linkedlist\linkedlist.c(119): warning C4715: “ListFind”: 不是所有的控件路径都返回值
+  test_2021_1_26_linkedlist.vcxproj -> E:\Code\2020bit\test_2021_1_26_linkedlist\Debug\test_2021_1_26_linkedlist.exe
