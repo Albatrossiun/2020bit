@@ -1,0 +1,5 @@
+﻿  RealizeStringClass.cpp
+E:\Code\2020bit\test_2021_2_15_RealizeStringClass\RealizeStringClass.cpp(368,31): warning C4018: “<=”: 有符号/无符号不匹配
+E:\Code\2020bit\test_2021_2_15_RealizeStringClass\RealizeStringClass.cpp(451,20): warning C4018: “<”: 有符号/无符号不匹配
+E:\Code\2020bit\test_2021_2_15_RealizeStringClass\RealizeStringClass.cpp(204): warning C4715: “String::operator[]”: 不是所有的控件路径都返回值
+  test_2021_2_15_RealizeStringClass.vcxproj -> E:\Code\2020bit\test_2021_2_15_RealizeStringClass\Debug\test_2021_2_15_RealizeStringClass.exe
