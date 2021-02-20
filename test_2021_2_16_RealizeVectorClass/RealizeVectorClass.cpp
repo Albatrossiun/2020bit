@@ -131,9 +131,23 @@ void test5()
 	v.insert(v.begin(), a + 1, a + 3);		// 23899
 }
 
+char* toLowerCase(char* str)
+{
+	char* ptr = str;
+	while (*ptr != '\0')
+	{
+		if (*ptr >= 'A' && *ptr <= 'Z')
+		{
+			*ptr += 32;
+		}
+		ptr++;
+	}
+	return str;
+}
 
 int main()
 {
 
+	
 	return 0;
 }
