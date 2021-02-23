@@ -131,65 +131,30 @@ void test5()
 	v.insert(v.begin(), a + 1, a + 3);		// 23899
 }
 
-char* toLowerCase(char* str)
+
+bool isConnect(int* nums1, int numsSize1, int* nums2, int numsSize2)
 {
-	char* ptr = str;
-	while (*ptr != '\0')
+	int i = 0;
+	int j = 0;
+	while (i < numsSize1 && j < numsSize2)
 	{
-		if (*ptr >= 'A' && *ptr <= 'Z')
-		{
-			*ptr += 32;
-		}
-		ptr++;
+		if (nums1[i] == nums2[j])
+			return true;
+		else if (nums1[i] > nums2[j])
+			j++;
+		else
+			i++;
 	}
-	return str;
+	return false;
 }
-
-
-int thirdMax(int* nums, int numsSize)
-{
-	if (numsSize < 3)
-	{
-		int max = nums[0];
-		for (int i = 0; i < numsSize; i++)
-		{
-			if (max < nums[i])
-				max = nums[i];
-		}
-		return max;
-	}
-	int a = nums[0];
-	int b = nums[0];
-	int c = nums[0];
-	for (int i = 0; i < numsSize; i++)
-	{
-		if (nums[i] > a)
-		{
-			b = a;
-			c = b;
-			a = nums[i];
-		}
-		else if (nums[i] > b)
-		{
-			c = b;
-			c = nums[i];
-		}
-		else if (nums[i] > c)
-		{
-			c = nums[i];
-		}
-	}
-	return c;
-}
-
 
 int main()
 {	
-	int a[] = { 3,2,1 };
-	int third=thirdMax(a, 3);
-	cout << third;
-
-
+	int a[] = { 1,2,3,4 };
+	int b[] = { 3,5 };
+	int tmp = isConnect(a, 4, b, 2);
+	cout << tmp << endl;
 	return 0;
 }
+
 
