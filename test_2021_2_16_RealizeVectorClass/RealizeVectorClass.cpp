@@ -132,29 +132,39 @@ void test5()
 }
 
 
-bool isConnect(int* nums1, int numsSize1, int* nums2, int numsSize2)
+bool isMatch(char* s, char* p)
 {
-	int i = 0;
-	int j = 0;
-	while (i < numsSize1 && j < numsSize2)
+	int m = 5;
+	int n = 4;
+	int dp[6][5];
+	memset(dp, 0, sizeof(dp));
+	dp[0][0] = true;
+	for (int i = 1; i <= n; i++)
 	{
-		if (nums1[i] == nums2[j])
-			return true;
-		else if (nums1[i] > nums2[j])
-			j++;
+		if (p[i - 1] == '*')
+			dp[0][i] = true;
 		else
-			i++;
+			break;
 	}
-	return false;
+	for (int i = 1; i <= m; i++)
+	{
+		for (int j = 1; j <= n; j++)
+		{
+			if (p[j - 1] == '*')
+				dp[i][j] = dp[i][j - 1] | dp[i - 1][j];
+			else if (p[j - 1] == '?' || s[i - 1] == p[j - 1])
+				dp[i][j] = dp[i - 1][j - 1];
+		}
+	}
+	return dp[m][n];
 }
 
 int main()
-{	
-	int a[] = { 1,2,3,4 };
-	int b[] = { 3,5 };
-	int tmp = isConnect(a, 4, b, 2);
-	cout << tmp << endl;
+{
+	char s[] = "acdcb";
+	char p[] = "a*cb";
+	int a = isMatch(s, p);
+	cout << a;
+
 	return 0;
 }
-
-
